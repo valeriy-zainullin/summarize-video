@@ -59,10 +59,10 @@ const WHISPER_MODELS = [
 ];
 
 const GEMMA_MODELS = [
-  { value: 'google/gemma-3-4b-it', label: 'Gemma 3 4B IT' },
-  { value: 'google/gemma-3-12b-it', label: 'Gemma 3 12B IT' },
-  { value: 'google/gemma-3-27b-it', label: 'Gemma 3 27B IT' },
-  { value: 'google/gemma-3-4b-pt', label: 'Gemma 3 4B PT' },
+  { value: 'google/gemma-4-4b-it', label: 'Gemma 4 4B IT' },
+  { value: 'google/gemma-4-12b-it', label: 'Gemma 4 12B IT' },
+  { value: 'google/gemma-4-27b-it', label: 'Gemma 4 27B IT' },
+  { value: 'google/gemma-4-4b-pt', label: 'Gemma 4 4B PT' },
 ];
 
 interface StatusInfo {
@@ -102,7 +102,7 @@ function YouTubeForm({ onJobCreated }: YouTubeFormProps) {
         frame_rate: values.frame_rate || 1,
         max_frames: values.max_frames || 5,
         max_tokens: values.max_tokens || 500,
-        model_name: values.model_name || 'google/gemma-3-4b-it',
+        model_name: values.model_name || 'google/gemma-4-4b-it',
         cleanup: values.cleanup !== false,
       };
       const res = await submitYouTube(payload);
@@ -136,7 +136,7 @@ function YouTubeForm({ onJobCreated }: YouTubeFormProps) {
           frame_rate: 1,
           max_frames: 5,
           max_tokens: 500,
-          model_name: 'google/gemma-3-4b-it',
+          model_name: 'google/gemma-4-4b-it',
           cleanup: true,
         }}
       >
@@ -234,7 +234,7 @@ function UploadForm({ onJobCreated }: UploadFormProps) {
       formData.append('frame_rate', String(values.frame_rate || 1));
       formData.append('max_frames', String(values.max_frames || 5));
       formData.append('max_tokens', String(values.max_tokens || 500));
-      formData.append('model_name', values.model_name || 'google/gemma-3-4b-it');
+      formData.append('model_name', values.model_name || 'google/gemma-4-4b-it');
       formData.append('cleanup', values.cleanup !== false ? 'true' : 'false');
 
       const res = await uploadVideo(formData);
@@ -268,7 +268,7 @@ function UploadForm({ onJobCreated }: UploadFormProps) {
           frame_rate: 1,
           max_frames: 5,
           max_tokens: 500,
-          model_name: 'google/gemma-3-4b-it',
+          model_name: 'google/gemma-4-4b-it',
           cleanup: true,
         }}
       >

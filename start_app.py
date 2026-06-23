@@ -86,8 +86,11 @@ def main():
     signal.signal(signal.SIGINT, cleanup)
     signal.signal(signal.SIGTERM, cleanup)
 
+    # Определяем базовый URL для отображения (используем localhost для вывода в консоль)
+    display_host = "localhost"
+
     # Устанавливаем переменную окружения для frontend, чтобы он знал адрес API
-    api_url = f"http://localhost:{args.port}"
+    api_url = f"http://{args.host}:{args.port}"
     env = os.environ.copy()
     env["VITE_API_URL"] = api_url
 
@@ -123,7 +126,9 @@ def main():
         )
         processes.append(api_proc)
 
-        url = f"http://localhost:{args.port}"
+        # В prod режиме frontend раздаётся через API, поэтому URL тот же
+        frontend_url = f"http://{display_host}:{args.port}"
+        api_url_display = f"http://{display_host}:{args.port}"
     else:
         # Dev режим
         print("=" * 60)
@@ -149,13 +154,14 @@ def main():
         )
         processes.append(frontend_proc)
 
-        url = f"http://localhost:{args.frontend_port}"
+        frontend_url = f"http://{display_host}:{args.frontend_port}"
+        api_url_display = f"http://{display_host}:{args.port}"
 
     print()
     print("=" * 60)
-    print(f"  Frontend:  {url}")
-    print(f"  API:       http://localhost:{args.port}")
-    print(f"  API docs:  http://localhost:{args.port}/docs")
+    print(f"  Frontend:  {frontend_url}")
+    print(f"  API:       {api_url_display}")
+    print(f"  API docs:  {api_url_display}/docs")
     print("=" * 60)
     print("  Нажмите Ctrl+C для остановки")
     print("=" * 60)
@@ -163,7 +169,7 @@ def main():
     # Открываем браузер
     if not args.no_browser:
         time.sleep(2)
-        webbrowser.open(url)
+        webbrowser.open(frontend_url)
 
     # Ожидаем завершения процессов
     try:

@@ -1,5 +1,5 @@
 """
-Video Summarizer with Gemma 3.
+Video Summarizer with Gemma 4.
 """
 
 __version__ = "0.1.0" 

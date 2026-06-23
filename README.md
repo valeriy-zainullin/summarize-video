@@ -1,20 +1,20 @@
-# Video Summarizer with Gemma 3
+# Video Summarizer with Gemma 4
 
-This project creates summaries of videos using Google's Gemma 3 multimodal model. It extracts key frames and transcribes audio from the video, then uses Gemma 3 to generate a concise summary based on this information. It supports both local video files and YouTube URLs via a command-line interface or REST API.
+This project creates summaries of videos using Google's Gemma 4 multimodal model. It extracts key frames and transcribes audio from the video, then uses Gemma 4 to generate a concise summary based on this information. It supports both local video files and YouTube URLs via a command-line interface or REST API.
 
 ## How It Works
 
 1. Audio Extraction & Transcription: Uses Whisper to convert video audio to text
 2. Key Frame Extraction: Uses FFmpeg to extract significant images from the video
-3. Processing with Gemma 3: Feeds the transcript and images into Gemma 3 for summarization
+3. Processing with Gemma 4: Feeds the transcript and images into Gemma 4 for summarization
 4. Summary Output: Generates and saves a textual summary
 
 ## Requirements
 
 - Python 3.8 or higher
 - FFmpeg installed on your system
-- A GPU is recommended for optimal performance with Gemma 3
-- Access to Gemma 3 multimodal model
+- A GPU is recommended for optimal performance with Gemma 4
+- Access to Gemma 4 multimodal model
 
 ## Installation
 
@@ -53,7 +53,7 @@ Advanced options:
 
 ```bash
 python src/summarize_video.py path/to/your/video.mp4 \
-  --model "google/gemma-3-12b-it" \
+  --model "google/gemma-4-12b-it" \
   --frame-rate 0.5 \
   --max-frames 5 \
   --whisper-model medium \
@@ -90,7 +90,7 @@ The project also includes a REST API for integration with web applications:
        "frame_rate": 1,
        "max_frames": 5,
        "max_tokens": 500,
-       "model_name": "google/gemma-3-4b-it",
+       "model_name": "google/gemma-4-4b-it",
        "cleanup": true
      }
      ```
@@ -103,7 +103,7 @@ The project also includes a REST API for integration with web applications:
      frame_rate: 1
      max_frames: 5
      max_tokens: 500
-     model_name: google/gemma-3-4b-it
+     model_name: google/gemma-4-4b-it
      cleanup: true
      ```
 
@@ -129,7 +129,7 @@ The project also includes a REST API for integration with web applications:
 ### Options
 
 - `--output-dir`: Directory to save extracted frames (default: "frames")
-- `--model`: Gemma model name/path (default: "google/gemma-3-4b-it")
+- `--model`: Gemma model name/path (default: "google/gemma-4-4b-it")
 - `--frame-rate`: Frame extraction rate in fps (default: 1)
 - `--max-frames`: Maximum frames to process (default: 5)
 - `--whisper-model`: Whisper model size (tiny, base, small, medium, large) (default: "base")
@@ -137,13 +137,13 @@ The project also includes a REST API for integration with web applications:
 - `--cleanup`: Remove extracted frames after processing
 - `--check-deps`: Check dependencies and exit
 
-## Notes on Gemma 3
+## Notes on Gemma 4
 
-Gemma 3 is Google's multimodal model that can process both text and images. This script uses the instruction-tuned version of Gemma 3 by default (google/gemma-3-4b-it), but you can also use other variants like:
+Gemma 4 is Google's multimodal model that can process both text and images. This script uses the instruction-tuned version of Gemma 4 by default (google/gemma-4-4b-it), but you can also use other variants like:
 
-- google/gemma-3-4b-pt (pre-trained, 4B parameters)
-- google/gemma-3-12b-it (instruction-tuned, 12B parameters)
-- google/gemma-3-27b-it (instruction-tuned, 27B parameters)
+- google/gemma-4-4b-pt (pre-trained, 4B parameters)
+- google/gemma-4-12b-it (instruction-tuned, 12B parameters)
+- google/gemma-4-27b-it (instruction-tuned, 27B parameters)
 
 The instruction-tuned models tend to produce better summaries.
 
@@ -156,4 +156,4 @@ The instruction-tuned models tend to produce better summaries.
 - [Whisper](https://github.com/openai/whisper) for audio transcription
 - [FFmpeg](https://ffmpeg.org/) for video frame extraction
 - [Hugging Face Transformers](https://huggingface.co/docs/transformers/index) for model integration
-- [Google Gemma 3](https://ai.google.dev/gemma) for the multimodal model 
+- [Google Gemma 4](https://ai.google.dev/gemma) for the multimodal model

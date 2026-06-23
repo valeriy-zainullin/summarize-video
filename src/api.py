@@ -54,7 +54,7 @@ class YouTubeRequest(BaseModel):
     frame_rate: float = 1
     max_frames: int = 5
     max_tokens: int = 500
-    model_name: str = "google/gemma-3-4b-it"
+    model_name: str = "google/gemma-4-4b-it"
     cleanup: bool = True
 
 class JobStatus(BaseModel):
@@ -69,7 +69,7 @@ class SummaryRequest(BaseModel):
     frame_rate: float = 1
     max_frames: int = 5
     max_tokens: int = 500
-    model_name: str = "google/gemma-3-4b-it"
+    model_name: str = "google/gemma-4-4b-it"
     cleanup: bool = True
 
 class SaveSummaryRequest(BaseModel):
@@ -445,7 +445,7 @@ class YouTubeSaveRequest(BaseModel):
     frame_rate: float = 1
     max_frames: int = 5
     max_tokens: int = 500
-    model_name: str = "google/gemma-3-4b-it"
+    model_name: str = "google/gemma-4-4b-it"
     cleanup: bool = True
 
 @app.post("/api/youtube/save", response_model=JobStatus)
@@ -583,7 +583,7 @@ async def upload_and_summarize_video(
     frame_rate: float = Form(1.0),
     max_frames: int = Form(5),
     max_tokens: int = Form(500),
-    model_name: str = Form("google/gemma-3-4b-it"),
+    model_name: str = Form("google/gemma-4-4b-it"),
     cleanup: bool = Form(True),
     user_id: Optional[str] = Form(None)
 ):

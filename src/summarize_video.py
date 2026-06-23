@@ -24,7 +24,7 @@ try:
     from transformers import AutoProcessor, Gemma4ForConditionalGeneration
 except ImportError:
     print("Transformers not installed or version is too old.")
-    print("Run: pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3")
+    print("Run: pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-4")
     exit(1)
 
 
@@ -92,7 +92,7 @@ def extract_key_frames(video_path, output_dir, frame_rate=1):
 
 def summarize_with_gemma(transcript, frame_paths, model_name, max_frames=5, max_tokens=150):
     """
-    Summarize video content using Gemma 3 multimodal model.
+    Summarize video content using Gemma 4 multimodal model.
     
     Args:
         transcript: Transcribed text from video
@@ -159,7 +159,7 @@ def summarize_with_gemma(transcript, frame_paths, model_name, max_frames=5, max_
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Summarize video using Gemma 3 multimodal model")
+    parser = argparse.ArgumentParser(description="Summarize video using Gemma 4 multimodal model")
     parser.add_argument("video_path", help="Path to the video file")
     parser.add_argument("--output-dir", default="frames", help="Directory to save extracted frames")
     parser.add_argument("--model", default="google/gemma-4-12b-it", help="Gemma model name/path")
