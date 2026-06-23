@@ -21,7 +21,7 @@ except ImportError:
     exit(1)
 
 try:
-    from transformers import AutoProcessor, Gemma3ForConditionalGeneration
+    from transformers import AutoProcessor, Gemma4ForConditionalGeneration
 except ImportError:
     print("Transformers not installed or version is too old.")
     print("Run: pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3")
@@ -108,7 +108,7 @@ def summarize_with_gemma(transcript, frame_paths, model_name, max_frames=5, max_
     
     # Load model, processor, and move to device
     processor = AutoProcessor.from_pretrained(model_name)
-    model = Gemma3ForConditionalGeneration.from_pretrained(model_name)
+    model = Gemma4ForConditionalGeneration.from_pretrained(model_name)
     
     # Move model to GPU if available
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -162,7 +162,7 @@ def main():
     parser = argparse.ArgumentParser(description="Summarize video using Gemma 3 multimodal model")
     parser.add_argument("video_path", help="Path to the video file")
     parser.add_argument("--output-dir", default="frames", help="Directory to save extracted frames")
-    parser.add_argument("--model", default="google/gemma-3-4b-it", help="Gemma model name/path")
+    parser.add_argument("--model", default="google/gemma-4-12b-it", help="Gemma model name/path")
     parser.add_argument("--frame-rate", type=float, default=1, help="Frame extraction rate (fps)")
     parser.add_argument("--max-frames", type=int, default=3, help="Maximum frames to process")
     parser.add_argument("--whisper-model", default="tiny", 
